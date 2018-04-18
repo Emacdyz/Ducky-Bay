@@ -1,0 +1,14 @@
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid rgb(0, 188, 187);
+}
+form .line {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+.form button {
+    background-color:  rgb(0, 188, 187)
+}

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {fetchAllProducts, createAd} from '../actions/products'
 import {Link} from 'react-router-dom'
 import PostNewAd from './PostNewAd'
+import './ProductsList.css'
  
 class ProductsList extends PureComponent {
 
@@ -18,8 +19,9 @@ class ProductsList extends PureComponent {
   render () {
     const {products} = this.props
     return (
-      <div>
-        <h1>Ducky Ads</h1>
+      <div className="content">
+      <div className="list">
+        <h2>Ducky Ads</h2>
         <table>
           <thead>
             <tr>
@@ -37,8 +39,11 @@ class ProductsList extends PureComponent {
             </tr> ) )}
           </tbody>
 				</table>
+      </div>
+      <div className="post">  
         <h2>Create your ad</h2>
         <PostNewAd onSubmit={this.createAd} />
+      </div>
       </div>
     )
   }
