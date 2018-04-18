@@ -1,14 +1,18 @@
 //src/components/productslist.js
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {fetchAllProducts} from '../actions/products'
+import {fetchAllProducts, createAd} from '../actions/products'
 import {Link} from 'react-router-dom'
+import PostNewAd from './PostNewAd'
  
 class ProductsList extends PureComponent {
-  
 
   componentWillMount() {
     this.props.fetchAllProducts()
+  }
+
+  createAd = (product) => {
+    this.props.createAd(product)
   }
 
   render () {
@@ -33,6 +37,8 @@ class ProductsList extends PureComponent {
             </tr> ) )}
           </tbody>
 				</table>
+        <h2>Create your ad</h2>
+        <PostNewAd onSubmit={this.createAd} />
       </div>
     )
   }
@@ -44,5 +50,5 @@ const mapStateToProps = function (state) {
   }
 }
 
-export default connect(mapStateToProps, {fetchAllProducts}) (ProductsList)
+export default connect(mapStateToProps, {fetchAllProducts, createAd}) (ProductsList)
 
