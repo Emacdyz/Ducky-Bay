@@ -3,7 +3,6 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/products'
 import {Link} from 'react-router-dom'
-import BottomNav from './layout/BottomNav'
 
 //Styling
 import '../css/layout.css'
@@ -19,7 +18,7 @@ class HomePage extends PureComponent {
 
     return (
         <div key={product.id} className='product-card'>
-        <Link to={ `/products/:id`}>
+        <Link to={ `/products/${product.id}`}>
           <img src={product.picture} alt="Not available for that product" />
           <div className='card-text'>
           <h2>{product.price}  &euro; </h2>
