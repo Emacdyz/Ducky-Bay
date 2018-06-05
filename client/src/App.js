@@ -12,11 +12,11 @@ class App extends Component {
       <Router>
         <div>
           <nav>
-          <Route exact path="/home" component={TopBar} />
+          <Route exact path="/products" component={TopBar} />
           </nav>
           
           <div className="app">
-            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/products" component={HomePage} />
             <Route exact path="/products/:id" component={ProductInfo} />
             <Route exact path="/upload" component={PostNewAd} />
             <Route exact path="/" render={ () => <Redirect to="/products" /> } />

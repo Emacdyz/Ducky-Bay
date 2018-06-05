@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/products'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import BottomNav from './layout/BottomNav'
 
 //Styling
@@ -18,13 +18,16 @@ class HomePage extends PureComponent {
   renderProduct = (product) => {
 
     return (
-      <div key={product.id} className='product-card'>
-        <img src={product.picture} alt="Not available for that product" />
-        <div className='card-text'>
-        <h2>{product.price}  &euro; </h2>
-        <p> {product.title} </p>
+        <div key={product.id} className='product-card'>
+        <Link to={ `/products/:id`}>
+          <img src={product.picture} alt="Not available for that product" />
+          <div className='card-text'>
+          <h2>{product.price}  &euro; </h2>
+          <p> {product.title} </p>
+          </div>
+        </Link>
         </div>
-      </div>
+      
     )
   }
 
@@ -38,9 +41,7 @@ class HomePage extends PureComponent {
         <div className="list">  
         {products.map(product => this.renderProduct(product))}
         </div>
-        
-        
-     
+
     )
   }
 } 
