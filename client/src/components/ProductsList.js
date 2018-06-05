@@ -4,8 +4,11 @@ import {connect} from 'react-redux'
 import {fetchAllProducts, createAd} from '../actions/products'
 import {Link} from 'react-router-dom'
 import PostNewAd from './PostNewAd'
-import './ProductsList.css'
- 
+import BottomNav from './layout/BottomNav'
+
+//Styling
+import '../css/bottomNav.css'
+
 class ProductsList extends PureComponent {
 
   componentWillMount() {
@@ -40,10 +43,11 @@ class ProductsList extends PureComponent {
           </tbody>
 				</table>
       </div>
-      <div className="post">  
+      {/* <div className="post">  
         <h2>Create your ad</h2>
         <PostNewAd onSubmit={this.createAd} />
-      </div>
+      </div> */}
+      <BottomNav/>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 //src/components/PostNewAd.js
 import React, {PureComponent} from 'react'
-import './PostNewAd.css'
+
 
 class PostNewAd extends PureComponent {
     state = {}
