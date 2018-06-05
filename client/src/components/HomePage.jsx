@@ -20,8 +20,10 @@ class HomePage extends PureComponent {
     return (
       <div key={product.id} className='product-card'>
         <img src={product.picture} alt="Not available for that product" />
+        <div className='card-text'>
         <h2>{product.price}  &euro; </h2>
         <p> {product.title} </p>
+        </div>
       </div>
     )
   }
@@ -33,11 +35,12 @@ class HomePage extends PureComponent {
 
     return (
       
-      <div className="list">  
-      {products.map(product => this.renderProduct(product))}
+        <div className="list">  
+        {products.map(product => this.renderProduct(product))}
+        </div>
         
-      <BottomNav/>
-      </div>
+        
+     
     )
   }
 } 

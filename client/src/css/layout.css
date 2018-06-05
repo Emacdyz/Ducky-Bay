@@ -7,6 +7,10 @@
     padding-top: 2px;
 }
 
+.app {
+    padding-top: 80px;
+}
+
 /* Bottom Navigation */
 .bottom-nav {
     background-color: #fff;
@@ -18,7 +22,7 @@
     z-index: 2;
     width: 100%;
     padding: 2% 0;
-    border-top: 1px solid #828282;
+    border-top: 1px solid #b1afaf;
 }
 .right-icon {
     padding-right: 5% 
