@@ -1,10 +1,17 @@
 // src/products/controller.ts
-
 import { JsonController, Get, Param, Post, HttpCode, Body, NotFoundError, Put, Delete } from 'routing-controllers'
 import Product from './entity';
 
 @JsonController()
 export default class ProductController {
+
+    @Get('/products')
+    async allProducts() {
+
+        const products = await Product.find()
+        
+        return products
+    }
 
     @Get('/products/:id')
         getProduct(
@@ -12,11 +19,7 @@ export default class ProductController {
     ){
         return Product.findOneById(id)
     }
-    @Get('/products')
-    async allProducts() {
-        const products = await Product.find()
-        return { products }
-    }
+    
     @Put('/products/:id')
     async updateProduct(
         @Param('id') id: number,

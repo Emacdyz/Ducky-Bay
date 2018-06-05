@@ -1,6 +1,6 @@
 //src/actions/products
 import * as request from 'superagent'
-const baseUrl = 'http://localhost:4000'
+import {baseUrl} from '../constants'
 
 export const FETCHED_PRODUCT_INFO = 'FETCHED_PRODUCT_INFO'
 
