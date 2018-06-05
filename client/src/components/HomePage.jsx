@@ -2,11 +2,12 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/products'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import BottomNav from './layout/BottomNav'
 
 //Styling
-import '../css/bottomNav.css'
+import '../css/layout.css'
+import '../css/homePage.css'
 
 class HomePage extends PureComponent {
 

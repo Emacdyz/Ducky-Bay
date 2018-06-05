@@ -1,5 +1,5 @@
 // src/reducers/products.js
-import {FETCHED_ALL_PRODUCTS, ADD_NEW_AD} from '../actions/products'
+import {FETCHED_ALL_PRODUCTS} from '../actions/products'
 
 export default function (state = [], {type, payload}) {
     switch (type) {

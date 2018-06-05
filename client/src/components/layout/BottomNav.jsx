@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 //styling
-import '../../css/bottomNav.css'
+import '../../css/layout.css'
 
 const BottomNav = (props) => {
 
-  
     const { location } = props
     return (
       <div className='bottom-nav'>
