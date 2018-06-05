@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import ProductsList from './components/ProductsList';
-import ProductInfo from './components/ProductInfo';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import PostNewAd from './components/PostNewAd';
-// import './App.css';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import HomePage from './components/HomePage'
+import ProductInfo from './components/ProductInfo'
+import PostNewAd from './components/PostNewAd'
+import TopBar from './components/layout/TopBar'
+import BottomNav from './components/layout/BottomNav';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Ducky Bay</h1>
-          </header>
-        
-          <div className="content">
-            <Route exact path="/home" component={ProductsList} />
+        <div>
+          <nav>
+          <Route exact path="/products" component={TopBar} />
+          </nav>
+          
+          <div className="app">
+            <Route exact path="/products" component={HomePage} />
             <Route exact path="/products/:id" component={ProductInfo} />
             <Route exact path="/upload" component={PostNewAd} />
             <Route exact path="/" render={ () => <Redirect to="/products" /> } />
           </div>
+          <BottomNav/>
         </div>
+        
       </Router>
     );
   }

@@ -1,6 +1,6 @@
 //src/actions/products
 import * as request from 'superagent'
-const baseUrl = 'http://localhost:4000'
+import {baseUrl} from '../constants'
 
 export const FETCHED_ALL_PRODUCTS = 'FETCHED_ALL_PRODUCTS'
 export const ADD_NEW_AD = 'ADD_NEW_AD'
@@ -8,12 +8,13 @@ export const ADD_NEW_AD = 'ADD_NEW_AD'
 export const fetchAllProducts = () => (dispatch) => {
     request
     .get(`${baseUrl}/products`)
-    .then(response => dispatch({
+    .then(result => dispatch({
         type: FETCHED_ALL_PRODUCTS,
-        payload: response.body.products
+        payload: result.body
     }))
-    .catch(err => alert(err))
+    .catch(err => console.error(err))
 }
+
 export const createAd = (product) => (dispatch) => {
     request
       .post(`${baseUrl}/products`)

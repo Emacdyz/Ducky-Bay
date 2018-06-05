@@ -4,17 +4,16 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 //styling
-import '../../css/bottomNav.css'
+import '../../css/layout.css'
 
 const BottomNav = (props) => {
 
-  
     const { location } = props
     return (
       <div className='bottom-nav'>
         <div className='left-icon'>
-          {location.pathname.indexOf('home') < 0 && <Link to={'/home'}><img src="icons/NavIcon.svg" alt="home-icon"></img></Link>}
-          {location.pathname.indexOf('home') > 0 && <Link to={'/home'}><img src="icons/NavIconActive.svg" alt="home-icon"></img></Link>}
+          {location.pathname.indexOf('home') < 0 && <Link to={'/products'}><img src="icons/NavIconActive.svg" alt="home-icon"></img></Link>}
+          {location.pathname.indexOf('home') > 0 && <Link to={'/products'}><img src="icons/NavIcon.svg" alt="home-icon"></img></Link>}
         </div>
         <div className='add-button'>
           {location.pathname.indexOf('upload') < 0 && <Link to={'/upload'}><img src="icons/addIcon.svg" alt="add-icon"></img></Link>}
