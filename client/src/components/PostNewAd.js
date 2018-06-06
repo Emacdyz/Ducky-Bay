@@ -3,70 +3,79 @@ import React, {PureComponent} from 'react'
 
 
 class PostNewAd extends PureComponent {
-    state = {}
+
+	constructor(props) {
+
+        super(props);
+        this.state = {
+          gallery: null
+        }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
 
 	handleSubmit = (e) => {
-		e.preventDefault()
-		this.props.onSubmit(this.state)
+        e.preventDefault()
+        if (!this.state.picture) 
+            return alert('Please add a picture!')
+		this.props.addPicture(this.state.picture,
+							this.state.title,
+							this.state.description,
+							this.state.price)
+			
 	}
 
-	handleChange = (event) => {
-		const {name, value} = event.target
-
+	handleChange = (e) => {
+		const {name,value} = e.target
 		this.setState({
-		  [name]: value
+			[name]: value
 		})
 	}
 
-    render () {
-        const initialValues = this.props.initialValues || {}
-        return (
-			<form onSubmit={this.handleSubmit}>
-				<div className="line">
-					<label htmlFor="Ad title">Ad Title</label>
-					<input name="title" id="title" value={
-						this.state.title || initialValues.title || ''
-					} onChange={ this.handleChange } />
+	handleUpload= (event) => {
+		const myFileReader = new FileReader()
+		myFileReader.onload = (e) => {
+            this.setState({ 
+                imageSrc: myFileReader.result, 
+
+            }); 
+		}
+		myFileReader.readAsDataURL(event.target.files[0])
+	
+		this.setState({
+			picture: event.target.files[0]
+		})
+  	}
+
+	render() {
+		return (
+			<form encrypt="multipart/form-data">
+				
+				<div>
+					<label htmlFor="camera">Camera</label>
+					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } />
 				</div>
 
-                <div className="line">
-					<label htmlFor="description">Product description</label>
-					<input name="description" id="description" value={
-						this.state.description || initialValues.description || ''
-					} onChange={ this.handleChange } />
+				<div>
+					<label htmlFor="title">Title</label>
+					<input type="text" name="title" id="title" onChange={ this.handleChange } />
 				</div>
 
-                <div className="line">
-					<label htmlFor="picture">Picture (url)</label>
-					<input name="picture" id="picture" value={
-						this.state.picture || initialValues.picture || ''
-					} onChange={ this.handleChange } />
+				<div>
+					<label htmlFor="description">Description</label>
+					<input type="text" name="description" id="description" onChange={ this.handleChange } />
 				</div>
 
-				<div className="line">
-					<label htmlFor="price">Product price</label>
-					<input name="price" id="price" value={
-						this.state.price || initialValues.price || ''
-					} onChange={ this.handleChange } />
+				<div>
+					<label htmlFor="price">Price</label>
+					<input type="text" name="price" id="price" onChange={ this.handleChange } />
 				</div>
 
-                <div className="line">
-					<label htmlFor="email">Email Address</label>
-					<input name="email" id="email" value={
-						this.state.email || initialValues.email || ''
-					} onChange={ this.handleChange } />
-				</div>
-
-				<div className="line">
-					<label htmlFor="phone">Phone Number</label>
-					<input name="phone" id="phone" value={
-						this.state.phone || initialValues.phone || ''
-					} onChange={ this.handleChange } />
-				</div>
-
-				<button type="submit">Save</button>
+				<button onClick={this.handleSubmit}>ADD</button>
 			</form>
+			
 		)
-    }
+	}
 }
+
 export default PostNewAd 
