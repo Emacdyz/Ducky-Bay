@@ -1,5 +1,5 @@
 // src/products/controller.ts
-import { JsonController, Get, Param, Post, HttpCode, Body, NotFoundError, Put, Delete } from 'routing-controllers'
+import { JsonController, Get, Param, Post, HttpCode, Body, NotFoundError, Put, Delete, UploadedFile } from 'routing-controllers'
 import Product from './entity';
 
 @JsonController()
@@ -30,13 +30,21 @@ export default class ProductController {
 
         return Product.merge(product, update).save()
     }   
+
     @Post('/products')
     @HttpCode(201)
-    createProduct(
-        @Body() product: Product
-    ) {
-        return product.save()
+    async createAd(
+        @Body() body: any,
+        @UploadedFile('file') file: any) {
+            const newAd = new Product()
+            newAd.picture = `${file.originalname.split('.').pop()}`
+            newAd.title = body.title
+            newAd.description = body.description
+            newAd.price = body.price
+    
+        return await newAd.save()
     }
+
     @Delete('/products/:id')
     async removeProduct(
         @Param('id') id: number
