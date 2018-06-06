@@ -1,5 +1,7 @@
 //src/components/PostNewAd.js
 import React, {PureComponent} from 'react'
+import {connect} from 'react-redux'
+import {upload} from '../actions/upload'
 
 
 class PostNewAd extends PureComponent {
@@ -18,7 +20,7 @@ class PostNewAd extends PureComponent {
         e.preventDefault()
         if (!this.state.picture) 
             return alert('Please add a picture!')
-		this.props.addPicture(this.state.picture,
+		this.props.upload(this.state.picture,
 							this.state.title,
 							this.state.description,
 							this.state.price)
@@ -78,4 +80,4 @@ class PostNewAd extends PureComponent {
 	}
 }
 
-export default PostNewAd 
+export default connect(null, {upload}) (PostNewAd) 
