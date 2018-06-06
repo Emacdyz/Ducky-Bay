@@ -5,7 +5,7 @@ import {baseUrl} from '../constants'
 export const UPLOAD_SUCCESS = 'UPLOAD_SUCCESS'
 export const UPLOAD_FAILED = 'UPLOAD_FAILED'
 
-export const upload = (picture, title, description, price) => {
+export const upload = (picture, title, description, price) => (dispatch) => {
     
     request
       .post(`${baseUrl}/products`)
@@ -26,6 +26,5 @@ export const upload = (picture, title, description, price) => {
           payload: 'Upload Failed'
         })
       })
-
 }
   
