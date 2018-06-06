@@ -13,6 +13,7 @@ export default class ProductController {
         return products
     }
 
+
     @Get('/products/:id')
         getProduct(
         @Param('id') id: number
@@ -36,8 +37,11 @@ export default class ProductController {
     async createAd(
         @Body() body: any,
         @UploadedFile('file') file: any) {
+
+            //need to convert file into  URL to be readable when fetching
+
             const newAd = new Product()
-            newAd.picture = `${file.originalname.split('.').pop()}`
+            newAd.picture = file
             newAd.title = body.title
             newAd.description = body.description
             newAd.price = body.price

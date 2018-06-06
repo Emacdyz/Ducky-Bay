@@ -19,7 +19,8 @@ class PostNewAd extends PureComponent {
 	handleSubmit = (e) => {
         e.preventDefault()
         if (!this.state.picture) 
-            return alert('Please add a picture!')
+			return alert('Please add a picture!')
+			console.log(this.state.picture)
 		this.props.upload(this.state.picture,
 							this.state.title,
 							this.state.description,
@@ -35,14 +36,24 @@ class PostNewAd extends PureComponent {
 	}
 
 	handleUpload= (event) => {
-		const myFileReader = new FileReader()
-		myFileReader.onload = (e) => {
-            this.setState({ 
-                imageSrc: myFileReader.result, 
+		window.URL = window.URL || window.webkitURL;
 
-            }); 
+		let img = document.createElement("img");
+		img.src = window.URL.createObjectURL(event.target.files[0]);
+		img.onload = (e) => {
+			this.setState({
+				imageSrc: window.URL.revokeObjectURL(this.src)
+			})	
 		}
-		myFileReader.readAsDataURL(event.target.files[0])
+
+		// const myFileReader = new FileReader()
+		// myFileReader.onload = (e) => {
+        //     this.setState({ 
+        //         imageSrc: myFileReader.readAsDataURL(event.target.files[0]), 
+        //     }); 
+		// }
+		// myFileReader.readAsDataURL(event.target.files[0])
+		
 	
 		this.setState({
 			picture: event.target.files[0]
