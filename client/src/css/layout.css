@@ -7,10 +7,6 @@
     padding-top: 2px;
 }
 
-.app {
-    padding-top: 70px;
-}
-
 /* Bottom Navigation */
 .bottom-nav {
     background-color: #fff;
@@ -29,4 +25,19 @@
 }
 .left-icon {
     padding-left: 5% 
+}
+
+/* Button */
+button {
+    background-color: #00B7BD;
+    width: 340px;
+    height: 35px;
+    font-weight: 600;
+    font-size: 1.3em;
+    font-family: 'Josefin Sans';
+    text-align: center;
+    letter-spacing: 4px;  
+    color: #fff;  
+    border: none;
+    border-radius: 5px;
 }

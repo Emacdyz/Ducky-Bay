@@ -3,6 +3,9 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {upload} from '../actions/upload'
 
+//Styling 
+import '../css/uploadForm.css'
+
 
 class PostNewAd extends PureComponent {
 
@@ -20,7 +23,6 @@ class PostNewAd extends PureComponent {
         e.preventDefault()
         if (!this.state.picture) 
 			return alert('Please add a picture!')
-			console.log(this.state.picture)
 		this.props.upload(this.state.picture,
 							this.state.title,
 							this.state.description,
@@ -55,30 +57,31 @@ class PostNewAd extends PureComponent {
 	render() {
 		
 		return (
+			<div>
+				<h1> #SELL </h1>
 			<form encrypt="multipart/form-data">
 				
-				<div>
-					<label htmlFor="camera">Camera</label>
-					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> <img src={this.state.imageSrc} alt="preview" style={{height: 200}}/>	
+				<div class="add-picture">
+					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> 
+					{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" style={{height: 200}}/>}	
+					{!this.state.imageSrc && <p> + Add a picture </p>}
 				</div>
+				
 
-				<div>
+				<div className="field">
 					<label htmlFor="title">Title</label>
 					<input type="text" name="title" id="title" onChange={ this.handleChange } />
-				</div>
-
-				<div>
+				
 					<label htmlFor="description">Description</label>
 					<input type="text" name="description" id="description" onChange={ this.handleChange } />
-				</div>
-
-				<div>
+				
 					<label htmlFor="price">Price</label>
 					<input type="text" name="price" id="price" onChange={ this.handleChange } />
 				</div>
 
-				<button onClick={this.handleSubmit}>ADD</button>
+				<button className= 'submit-form' onClick={this.handleSubmit}>ADD</button>
 			</form>
+			</div>
 			
 		)
 	}

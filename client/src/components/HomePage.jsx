@@ -3,7 +3,9 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/products'
 import {Link} from 'react-router-dom'
-import catalogue from './Pictures' 
+import TopBar from './layout/TopBar'
+import catalogue from './Pictures'
+import BottomNav from './layout/BottomNav' 
 
 //Styling
 import '../css/layout.css'
@@ -37,11 +39,14 @@ class HomePage extends PureComponent {
     if (products === null) return null
 
     return (
+      <div>
+        <TopBar/>
       
         <div className="list">  
         {products.map(product => this.renderProduct(product))}
         </div>
-
+        <BottomNav/>
+      </div>
     )
   }
 } 
