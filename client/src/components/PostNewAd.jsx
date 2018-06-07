@@ -36,23 +36,15 @@ class PostNewAd extends PureComponent {
 	}
 
 	handleUpload= (event) => {
-		window.URL = window.URL || window.webkitURL;
 
-		let img = document.createElement("img");
-		img.src = window.URL.createObjectURL(event.target.files[0]);
-		img.onload = (e) => {
-			this.setState({
-				imageSrc: window.URL.revokeObjectURL(this.src)
-			})	
+		const myFileReader = new FileReader()
+		myFileReader.onload = (e) => {
+            this.setState({ 
+                imageSrc: myFileReader.result, 
+            }); 
 		}
-
-		// const myFileReader = new FileReader()
-		// myFileReader.onload = (e) => {
-        //     this.setState({ 
-        //         imageSrc: myFileReader.readAsDataURL(event.target.files[0]), 
-        //     }); 
-		// }
-		// myFileReader.readAsDataURL(event.target.files[0])
+		
+		myFileReader.readAsDataURL(event.target.files[0])
 		
 	
 		this.setState({
@@ -61,12 +53,13 @@ class PostNewAd extends PureComponent {
   	}
 
 	render() {
+		// console.log(this.state.imageSrc)
 		return (
 			<form encrypt="multipart/form-data">
 				
 				<div>
 					<label htmlFor="camera">Camera</label>
-					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } />
+					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> <img src={this.state.imageSrc} alt="preview" style={{height: 200}}/>	
 				</div>
 
 				<div>
