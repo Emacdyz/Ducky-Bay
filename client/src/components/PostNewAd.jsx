@@ -53,7 +53,7 @@ class PostNewAd extends PureComponent {
   	}
 
 	render() {
-		// console.log(this.state.imageSrc)
+		
 		return (
 			<form encrypt="multipart/form-data">
 				

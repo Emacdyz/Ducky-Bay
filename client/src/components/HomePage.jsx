@@ -3,6 +3,7 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchAllProducts} from '../actions/products'
 import {Link} from 'react-router-dom'
+import catalogue from './Pictures' 
 
 //Styling
 import '../css/layout.css'
@@ -14,12 +15,12 @@ class HomePage extends PureComponent {
     this.props.fetchAllProducts()
   }
 
-  renderProduct = (product) => {
-
+  renderProduct = (product) => {    
+  
     return (
         <div key={product.id} className='product-card'>
         <Link to={ `/products/${product.id}`}>
-          <img src={product.picture} alt="Not available for that product" />
+          <img src={catalogue[Math.floor(Math.random() * catalogue.length)]} alt="Not available for that product" />
           <div className='card-text'>
           <h2>{product.price}  &euro; </h2>
           <p> {product.title} </p>
@@ -32,7 +33,7 @@ class HomePage extends PureComponent {
 
   render () {
     const {products} = this.props
-
+  
     if (products === null) return null
 
     return (

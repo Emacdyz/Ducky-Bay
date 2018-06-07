@@ -41,7 +41,7 @@ export default class ProductController {
             //need to convert file into  URL to be readable when fetching
 
             const newAd = new Product()
-            newAd.picture = file
+            newAd.picture = file.originalname
             newAd.title = body.title
             newAd.description = body.description
             newAd.price = body.price
