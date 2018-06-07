@@ -6,7 +6,6 @@ import {upload} from '../actions/upload'
 //Styling 
 import '../css/uploadForm.css'
 
-
 class PostNewAd extends PureComponent {
 
 	constructor(props) {
@@ -61,7 +60,7 @@ class PostNewAd extends PureComponent {
 				<h1> #SELL </h1>
 			<form encrypt="multipart/form-data">
 				
-				<div class="add-picture">
+				<div className="add-picture">
 					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> 
 					{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" style={{height: 200}}/>}	
 					{!this.state.imageSrc && <p> + Add a picture </p>}
@@ -69,13 +68,13 @@ class PostNewAd extends PureComponent {
 				
 
 				<div className="field">
-					<label htmlFor="title">Title</label>
-					<input type="text" name="title" id="title" onChange={ this.handleChange } />
+					<p>Title</p>
+					<input type="text" name="title" id="title" onChange={ this.handleChange }/>
 				
-					<label htmlFor="description">Description</label>
+					<p>Description</p>
 					<input type="text" name="description" id="description" onChange={ this.handleChange } />
-				
-					<label htmlFor="price">Price</label>
+
+					<p>Price</p>
 					<input type="text" name="price" id="price" onChange={ this.handleChange } />
 				</div>
 
