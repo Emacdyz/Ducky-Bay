@@ -1,7 +1,12 @@
+.arrow {
+    position: absolute;
+    top: 20px;
+    left: 15px
+}
 .add-picture p {
     border: 1px solid #00B7BD;
     display: block;
-    margin: 20% auto; 
+    margin: 24% auto; 
     text-align: center;
     padding: 5px 10px;
     color: #00B7BD;
@@ -21,12 +26,11 @@
     position: absolute;
     top: 60px;
     right: 0;
-    left: 0;
-    
+    left: 0; 
 }
 .field {
     position: absolute;
-    bottom: 20%;
+    bottom: 22%;
     width: 90%;
     right: 0;
     left: 0;
@@ -39,7 +43,7 @@ input[type="text"]{
     box-sizing: border-box;
     outline: none;
     border: 1px solid lightgray;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 5px;
     font-size: 1em;
 }

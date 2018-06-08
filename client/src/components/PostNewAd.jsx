@@ -2,6 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {upload} from '../actions/upload'
+import {Link} from 'react-router-dom'
 
 //Styling 
 import '../css/uploadForm.css'
@@ -56,8 +57,9 @@ class PostNewAd extends PureComponent {
 	render() {
 		
 		return (
-			<div>
+			<div className="upload-page">
 				<h1> #SELL </h1>
+				<Link to={ `/products`}><img src={'./icons/GoBack.svg'} alt="arrow" className="arrow"/></Link>
 			<form encrypt="multipart/form-data">
 				
 				<div className="add-picture">
