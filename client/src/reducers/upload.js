@@ -8,7 +8,7 @@ export default function (state = {}, {type, payload}) {
         return payload
 
 		case UPLOAD_FAILED:
-		return {error: payload}
+		return payload
 
 		default:
       return state

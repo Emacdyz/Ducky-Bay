@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {upload} from '../actions/upload'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 //Styling 
 import '../css/uploadForm.css'
@@ -26,8 +26,7 @@ class PostNewAd extends PureComponent {
 		this.props.upload(this.state.picture,
 							this.state.title,
 							this.state.description,
-							this.state.price)
-			
+							this.state.price)	
 	}
 
 	handleChange = (e) => {
@@ -55,37 +54,64 @@ class PostNewAd extends PureComponent {
   	}
 
 	render() {
-		
-		return (
-			<div className="upload-page">
-				<h1> #SELL </h1>
-				<Link to={ `/products`}><img src={'./icons/GoBack.svg'} alt="arrow" className="arrow"/></Link>
-			<form encrypt="multipart/form-data">
-				
-				<div className="add-picture">
-					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> 
-					{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" />}	
-					{!this.state.imageSrc && <p> + Add a picture </p>}
-				</div>
-				
+		const {appStatus} = this.props
 
-				<div className="field">
-					<p>Title</p>
-					<input type="text" name="title" id="title" onChange={ this.handleChange }/>
-				
-					<p>Description</p>
-					<input type="text" name="description" id="description" onChange={ this.handleChange } />
+		if (appStatus === "uploading") {
 
-					<p>Price</p>
-					<input type="text" name="price" id="price" onChange={ this.handleChange } />
-				</div>
+			return (
+				<div className="upload-page">
+					<h1> #SELL </h1>
+					<Link to={ `/products`}><img src={'./icons/GoBack.svg'} alt="arrow" className="arrow"/></Link>
+				<form encrypt="multipart/form-data">
+					
+					<div className="add-picture">
+						<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> 
+						{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" />}	
+						{!this.state.imageSrc && <p> + Add a picture </p>}
+					</div>
+					
+	
+					<div className="field">
+						<p>Title</p>
+						<input type="text" name="title" id="title" onChange={ this.handleChange }/>
+					
+						<p>Description</p>
+						<input type="text" name="description" id="description" onChange={ this.handleChange } />
+	
+						<p>Price</p>
+						<input type="text" name="price" id="price" onChange={ this.handleChange } />
+					</div>
+	
+					<button className= 'submit-button' onClick={this.handleSubmit}>ADD</button>
+				</form>
+				</div>	
+			)}
 
-				<button className= 'submit-button' onClick={this.handleSubmit}>ADD</button>
-			</form>
-			</div>
+			else if (appStatus === "uploadSucces") {
+				return <Redirect to='/products'/>
+			}
 			
-		)
+			else if (appStatus === "failed") {
+				return (
+				<div>	
+					<div className="upload-page">
+						<h1> #SELL </h1>
+						<Link to={ `/products`}><img src={'./icons/GoBack.svg'} alt="arrow" className="arrow"/></Link>
+					</div>
+					<div>
+						<img src={'/uploadfailed.gif'} alt="Upload Failed, please re-try." className="upload-failed"/>
+					</div>
+
+				</div>
+
+				)
+			}
 	}
 }
 
-export default connect(null, {upload}) (PostNewAd) 
+const mapStateToProps = state => ({
+	appStatus: state.appStatus
+
+})
+
+export default connect(mapStateToProps, {upload}) (PostNewAd) 

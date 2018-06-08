@@ -60,27 +60,33 @@ input[type="text"]:focus {
     margin: auto;   
     bottom: 20px;
 }
+.upload-failed { 
+    margin: 50% auto;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Media queries */
 @media screen and (min-width: 700px) {
     .add-picture p {
-        padding: 15px 20px;
+        padding: 10px 20px;
         font-size: 1.4em;
+        margin: 18% auto; 
     }
     .picture {
-        margin: 10% auto;
         height: 300px;
-        text-align: center;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        left: 0; 
     }
     .field p {
         font-size: 1.4em;
     }
     .submit-button {  
         bottom: 25px;
+    }
+    .upload-failed { 
+        margin: 25% auto;
+        height: 400px;
     }
 
 }
