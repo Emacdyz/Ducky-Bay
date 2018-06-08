@@ -14,7 +14,6 @@ export const upload = (picture, title, description, price) => (dispatch) => {
       .field('description', description)
       .field('price', price)
       .then(res => {
-          console.log(res)
         dispatch({
           type: UPLOAD_SUCCESS,
           payload: res.body
@@ -27,4 +26,5 @@ export const upload = (picture, title, description, price) => (dispatch) => {
         })
       })
 }
+
   

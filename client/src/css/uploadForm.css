@@ -60,7 +60,7 @@ input[type="text"]:focus {
     margin: auto;   
     bottom: 20px;
 }
-.upload-failed { 
+.upload-status { 
     margin: 50% auto;
     height: 250px;
     display: flex;
@@ -84,9 +84,8 @@ input[type="text"]:focus {
     .submit-button {  
         bottom: 25px;
     }
-    .upload-failed { 
+    .upload-status { 
         margin: 25% auto;
         height: 400px;
     }
-
 }

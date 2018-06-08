@@ -6,6 +6,7 @@ import {Link, Redirect} from 'react-router-dom'
 
 //Styling 
 import '../css/uploadForm.css'
+import HomePage from './HomePage';
 
 class PostNewAd extends PureComponent {
 
@@ -13,16 +14,15 @@ class PostNewAd extends PureComponent {
 
         super(props);
         this.state = {
-          gallery: null
+		  gallery: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
 	handleSubmit = (e) => {
+
         e.preventDefault()
-        if (!this.state.picture) 
-			return alert('Please add a picture!')
 		this.props.upload(this.state.picture,
 							this.state.title,
 							this.state.description,
@@ -65,7 +65,7 @@ class PostNewAd extends PureComponent {
 				<form encrypt="multipart/form-data">
 					
 					<div className="add-picture">
-						<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> 
+						<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload }  /> 
 						{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" />}	
 						{!this.state.imageSrc && <p> + Add a picture </p>}
 					</div>
@@ -73,7 +73,7 @@ class PostNewAd extends PureComponent {
 	
 					<div className="field">
 						<p>Title</p>
-						<input type="text" name="title" id="title" onChange={ this.handleChange }/>
+						<input type="text" name="title" id="title" onChange={ this.handleChange } />
 					
 						<p>Description</p>
 						<input type="text" name="description" id="description" onChange={ this.handleChange } />
@@ -87,11 +87,18 @@ class PostNewAd extends PureComponent {
 				</div>	
 			)}
 
-			else if (appStatus === "uploadSucces") {
-				return <Redirect to='/products'/>
+			else if (appStatus === "uploadSuccess") {
+				setTimeout(window.location.assign('/products'), 5000)
+			
+				return (
+					<div>
+						<img src={'/uploadsucess.gif'} alt="Success! You're ad will be online soon!" className="upload-status"/>
+					</div>
+					
+				)
 			}
 			
-			else if (appStatus === "failed") {
+			else {
 				return (
 				<div>	
 					<div className="upload-page">
@@ -99,7 +106,7 @@ class PostNewAd extends PureComponent {
 						<Link to={ `/products`}><img src={'./icons/GoBack.svg'} alt="arrow" className="arrow"/></Link>
 					</div>
 					<div>
-						<img src={'/uploadfailed.gif'} alt="Upload Failed, please re-try." className="upload-failed"/>
+						<img src={'/uploadfailed.gif'} alt="Upload Failed, please re-try." className="upload-status"/>
 					</div>
 
 				</div>

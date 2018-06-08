@@ -10,17 +10,17 @@ export default class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number
 
-  @Column('text', {nullable:false})
+  @Column('text')
   picture: any
 
   @Length(5, 50)
-  @Column('text', {nullable:false})
+  @Column('text')
   title: string
 
-  @Column('text', {nullable:false})
+  @Column('text')
   description: string
 
-  @Column('integer', {nullable:false})
+  @Column('integer')
   price: number
 
 }
