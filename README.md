@@ -4,6 +4,8 @@ This project is buy/sell platform where users can create ads to sell products an
 
 ### 🔷 In Progress!
 
+![alt text](https://github.com/Emacdyz/Ducky-Bay/blob/master/client/public/AppDisplay.png)
+
 ## Client
 
 It's build using `create-react-app`. You first need to `yarn` in order to get all the dependencies locally. To start the app `yarn start` can be used.
