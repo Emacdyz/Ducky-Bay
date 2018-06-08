@@ -23,6 +23,7 @@
 .picture {
     margin: 0 auto;
     text-align: center;
+    height: 200px;
     position: absolute;
     top: 60px;
     right: 0;
@@ -52,10 +53,34 @@ input[type="text"]:focus {
     border-color: #00B7BD;
     transition:  0.25s ease-out, 0.25s ease-out 0.25s;
 }
-.submit-form {
+.submit-button {
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;   
-    bottom: 15px;
+    bottom: 20px;
+}
+
+/* Media queries */
+@media screen and (min-width: 700px) {
+    .add-picture p {
+        padding: 15px 20px;
+        font-size: 1.4em;
+    }
+    .picture {
+        margin: 10% auto;
+        height: 300px;
+        text-align: center;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0; 
+    }
+    .field p {
+        font-size: 1.4em;
+    }
+    .submit-button {  
+        bottom: 25px;
+    }
+
 }

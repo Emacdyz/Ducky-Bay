@@ -64,7 +64,7 @@ class PostNewAd extends PureComponent {
 				
 				<div className="add-picture">
 					<input type="file" name="gallery" id="gallery" onChange={ this.handleUpload } /> 
-					{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" style={{height: 200}}/>}	
+					{ this.state.imageSrc && <img className="picture"src={this.state.imageSrc} alt="preview" />}	
 					{!this.state.imageSrc && <p> + Add a picture </p>}
 				</div>
 				
@@ -80,7 +80,7 @@ class PostNewAd extends PureComponent {
 					<input type="text" name="price" id="price" onChange={ this.handleChange } />
 				</div>
 
-				<button className= 'submit-form' onClick={this.handleSubmit}>ADD</button>
+				<button className= 'submit-button' onClick={this.handleSubmit}>ADD</button>
 			</form>
 			</div>
 			
