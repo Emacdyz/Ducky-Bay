@@ -1,6 +1,6 @@
-# E-bay Clone 
+# Ducky Bay  
 
-This project consist on a simple buy/sell platform where users can create ads to sell products and others can see the list of products in order to buy something.
+This project is buy/sell platform where users can create ads to sell products and others can see the list of products in order to buy something. It's mobile first, but can also display on tablets.
 
 ### 🔷 In Progress!
 
