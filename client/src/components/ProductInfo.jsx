@@ -12,6 +12,16 @@ class ProductInfo extends PureComponent {
     this.props.fetchProductInfo(this.props.match.params.id)
   }
 
+  openModal = () => {
+
+    let button = document.getElementById('button')
+    button.style.display = "none"
+
+    let seller = document.getElementById('seller')
+    seller.style.display = "block"
+
+  }
+
   render() {
     const {product} = this.props
       return (
@@ -25,7 +35,15 @@ class ProductInfo extends PureComponent {
               <p> { product.description}</p>
               <p> { product.price } &euro; </p>
             </div>
-            <button className= 'submit-button'>BUY</button>
+
+            
+              <div className="seller" id="seller">
+              <h2> Seller: </h2>
+              <p> { product.contactName } : { product.contactInfo } </p>
+              </div>
+           
+
+            <button className= 'submit-button' id="button" onClick={this.openModal}>BUY</button>
           
         </div>
       )
