@@ -2,11 +2,10 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {upload} from '../actions/upload'
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 //Styling 
 import '../css/uploadForm.css'
-import HomePage from './HomePage';
 
 class PostNewAd extends PureComponent {
 

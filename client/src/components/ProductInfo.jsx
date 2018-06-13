@@ -2,8 +2,9 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchProductInfo} from '../actions/productInfo'
-import {Link} from 'react-router-dom'
 import catalogue from './Pictures'
+import {Link} from 'react-router-dom'
+import '../css/productPage.css'
 
 class ProductInfo extends PureComponent {
   
@@ -14,16 +15,18 @@ class ProductInfo extends PureComponent {
   render() {
     const {product} = this.props
       return (
-        <div>
+        <div className="product-info">
+            <Link to={ `/products`}><img src={'./icons/GoBackWhite.svg'} alt="arrow" className="arrow"/></Link>
+          
             <img src={catalogue[Math.floor(Math.random() * catalogue.length)]} alt="productdetails"></img>
 
-            <h2> { product.title } </h2>
-            <p> { product.description}</p>
-            <p> { product.price } &euro; </p>
-            
-            
-            <h2> Contact details: </h2>
-            <p> { product.email } </p>
+            <div className="content">
+              <h2> { product.title } </h2>
+              <p> { product.description}</p>
+              <p> { product.price } &euro; </p>
+            </div>
+            <button className= 'submit-button'>BUY</button>
+          
         </div>
       )
     }

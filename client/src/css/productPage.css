@@ -1,0 +1,10 @@
+.product-info {
+    height: 100vh;
+}
+.product-info img {
+    width: 100%;
+    height: 400px
+}
+.content {
+    margin: 20px;
+}
