@@ -42,6 +42,8 @@ export default class ProductController {
             newAd.title = body.title
             newAd.description = body.description
             newAd.price = body.price
+            newAd.contactName = body.contactName
+            newAd.contactInfo = body.contactInfo
     
         return await newAd.save()
     }

@@ -23,4 +23,10 @@ export default class Product extends BaseEntity {
   @Column('integer')
   price: number
 
+  @Column('text')
+  contactName: string
+
+  @Column('text')
+  contactInfo: string
+  
 }

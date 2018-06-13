@@ -25,7 +25,9 @@ class PostNewAd extends PureComponent {
 		this.props.upload(this.state.picture,
 							this.state.title,
 							this.state.description,
-							this.state.price)	
+							this.state.price, 
+							this.state.contactName,
+							this.state.contactInfo)	
 	}
 
 	handleChange = (e) => {
@@ -79,6 +81,12 @@ class PostNewAd extends PureComponent {
 	
 						<p>Price</p>
 						<input type="text" name="price" id="price" onChange={ this.handleChange } />
+
+						<p>Contact Name</p>
+						<input type="text" name="contactName" id="contactName" onChange={ this.handleChange } />
+
+						<p>Contact Info (phone number or email)</p>
+						<input type="text" name="contactInfo" id="contactInfo" onChange={ this.handleChange } />
 					</div>
 	
 					<button className= 'submit-button' onClick={this.handleSubmit}>ADD</button>
